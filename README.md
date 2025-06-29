@@ -40,10 +40,6 @@ Open `simple calculator/index.html` in your browser.
 - `Escape`: Clear
 - `Backspace`: Delete last character
 
-## Screenshots
-
-*(Add screenshots here if available)*
-
 ## License
 
 This project is open source.
