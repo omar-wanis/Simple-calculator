@@ -16,7 +16,7 @@ A modern, responsive calculator web app built with HTML, CSS, and JavaScript.
 1. **Clone the repository:**
    ```sh
    git clone https://github.com/omar-wanis/Simple-calculator.git
-   cd Simple-calculator
+   
    ```
 
 2. **Open the App:**
