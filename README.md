@@ -11,10 +11,6 @@ A modern, responsive calculator web app built with HTML, CSS, and JavaScript.
 - Ripple effect and modern UI styling
 - Handles floating point numbers and edge cases (e.g., division by zero shows "Error")
 
-## Demo
-
-Open `simple calculator/index.html` in your browser.
-
 ## Usage
 
 1. **Clone the repository:**
