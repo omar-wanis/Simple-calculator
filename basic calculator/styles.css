@@ -1,0 +1,227 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .calculator {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            width: 350px;
+            transform: scale(0.9);
+            animation: slideIn 0.6s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        #display {
+            width: 100%;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            font-size: 28px;
+            font-weight: 300;
+            text-align: right;
+            padding: 0 20px;
+            margin-bottom: 25px;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        #display:focus {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .btn {
+            height: 65px;
+            border: none;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            outline: none;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Number buttons */
+        .btn:not(.operator):not(.equals):not(.clear) {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:not(.operator):not(.equals):not(.clear):hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Operator buttons */
+        .operator {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 15px rgba(238, 90, 82, 0.3);
+        }
+
+        .operator:hover {
+            background: linear-gradient(135deg, #ff5252, #e53935);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(238, 90, 82, 0.4);
+        }
+
+        /* Equals button */
+        .equals {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 15px rgba(68, 160, 141, 0.3);
+            grid-row: span 2;
+        }
+
+        .equals:hover {
+            background: linear-gradient(135deg, #26d0ce, #2a9b87);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(68, 160, 141, 0.4);
+        }
+
+        /* Clear button */
+        .clear {
+            background: linear-gradient(135deg, #ffa726, #ff7043);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 15px rgba(255, 112, 67, 0.3);
+        }
+
+        .clear:hover {
+            background: linear-gradient(135deg, #ff9800, #f4511e);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(255, 112, 67, 0.4);
+        }
+
+        /* Zero button spans two columns */
+        .zero {
+            grid-column: span 2;
+        }
+
+        /* Ripple effect */
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            pointer-events: none;
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .calculator {
+                width: 90%;
+                padding: 20px;
+            }
+            
+            .btn {
+                height: 55px;
+                font-size: 18px;
+            }
+            
+            #display {
+                height: 70px;
+                font-size: 24px;
+            }
+        }
+
+        /* Glowing animation for display when calculating */
+        .calculating {
+            animation: glow 0.5s ease-in-out;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+        }
