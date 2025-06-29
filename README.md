@@ -26,3 +26,28 @@ Open `simple calculator/index.html` in your browser.
 2. **Open the App:**
    - Navigate to the `simple calculator` folder.
    - Open `index.html` in your web browser.
+
+## File Structure
+
+- `simple calculator/index.html` – Main HTML file for the calculator UI
+- `simple calculator/styles.css` – Stylish, responsive CSS for a modern look
+- `simple calculator/script.js` – JavaScript logic for calculator functionality
+
+## Keyboard Shortcuts
+
+- Numbers and operators can be typed directly
+- `Enter` or `=`: Calculate
+- `Escape`: Clear
+- `Backspace`: Delete last character
+
+## Screenshots
+
+*(Add screenshots here if available)*
+
+## License
+
+This project is open source.
+
+---
+
+Made by [omar-wanis](https://github.com/omar-wanis)
